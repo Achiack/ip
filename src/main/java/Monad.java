@@ -107,6 +107,40 @@ public class Monad {
                     System.out.println("___________________________");
                 }
 
+                else if (input.startsWith("delete")) {
+                    if (input.length() < 7) {
+                        throw new MonadException("OOPS!!! You need to specify the index of the task to delete.");
+                    }
+
+                    String[] parts = input.split(" ");
+
+                    if (parts.length != 2) {
+                        throw new MonadException("OOPS!!! Please provide exactly one task number.");
+                    }
+
+                    int index;
+
+                    try {
+                        index = Integer.parseInt(parts[1]) - 1; // convert to 0-based index
+                    }
+
+                    catch (NumberFormatException e) {
+                        throw new MonadException("OOPS!!! Task number must be a number.");
+                    }
+
+                    if (index < 0 || index >= tasks.size()) {
+                        throw new MonadException("OOPS!!! That task number is out of range.");
+                    }
+
+                    Task removedTask = tasks.remove(index);
+
+                    System.out.println("____________________________________________________________");
+                    System.out.println(" Noted. I've removed this task:");
+                    System.out.println("   " + removedTask);
+                    System.out.println(" Now you have " + tasks.size() + " tasks in the list.");
+                    System.out.println("____________________________________________________________");
+                }
+
                 else {
                     throw new MonadException("OOPS!!! I'm sorry, but I don't know what that means :-(");
                 }
