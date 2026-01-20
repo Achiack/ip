@@ -13,79 +13,109 @@ public class Monad {
         System.out.println("___________________________");
 
         while (true) {
-            String input = sc.nextLine();
+            try{
+                String input = sc.nextLine();
 
-            if(input.equalsIgnoreCase("bye")) {
-                System.out.println("___________________________");
-                System.out.println("Bye. Hope to see you again soon!");
-                System.out.println("___________________________");
-                break;
-            }
-
-            else if(input.startsWith("todo")) {
-                Task t = new Todo(input);
-                tasks.add(t);
-                System.out.println("___________________________");
-                System.out.println("Got it. I've added this task:\n");
-                System.out.println(t.toString());
-                System.out.println("\nNow you have " + tasks.size() + " tasks in the list.");
-                System.out.println("___________________________");
-            }
-
-            else if(input.startsWith("deadline")) {
-                String[] parts = input.substring(9).split(" /by ", 2);
-                Task t = new Deadline(parts[0], parts[1]);
-                tasks.add(t);
-                System.out.println("___________________________");
-                System.out.println("Got it. I've added this task:\n");
-                System.out.println(t.toString());
-                System.out.println("\nNow you have " + tasks.size() + " tasks in the list.");
-                System.out.println("___________________________");
-            }
-
-            else if(input.startsWith("event")) {
-                String[] parts = input.substring(6).split(" /from | /to ", 3);
-                Task t = new Event(parts[0], parts[1], parts[2]);
-                tasks.add(t);
-                System.out.println("___________________________");
-                System.out.println("Got it. I've added this task:\n");
-                System.out.println(t.toString());
-                System.out.println("\nNow you have " + tasks.size() + " tasks in the list.");
-                System.out.println("___________________________");
-            }
-
-            else if(input.equalsIgnoreCase("list")) {
-                System.out.println("___________________________");
-                for (int i = 0; i < tasks.size(); i++) {
-                    System.out.println((i + 1) + "." + tasks.get(i));
+                if (input.equalsIgnoreCase("bye")) {
+                    System.out.println("___________________________");
+                    System.out.println("Bye. Hope to see you again soon!");
+                    System.out.println("___________________________");
+                    break;
                 }
-                System.out.println("___________________________");
+
+                else if (input.startsWith("todo")) {
+                    if (input.length() < 5) {
+                        throw new MonadException("OOPS!!! The description of a todo cannot be empty.");
+                    }
+
+                    String desc = input.substring(5).trim();
+                    if (desc.isEmpty()) {
+                        throw new MonadException("OOPS!!! The description of a todo cannot be empty.");
+                    }
+
+                    Task t = new Todo(desc);
+                    tasks.add(t);
+                    System.out.println("___________________________");
+                    System.out.println("Got it. I've added this task:\n");
+                    System.out.println(t.toString());
+                    System.out.println("\nNow you have " + tasks.size() + " tasks in the list.");
+                    System.out.println("___________________________");
+                }
+
+                else if (input.startsWith("deadline")) {
+                    if (input.length() < 9) {
+                        throw new MonadException("OOPS!!! The description or date of a deadline cannot be empty.");
+                    }
+
+                    String[] parts = input.substring(9).split(" /by ", 2);
+
+                    if (parts.length < 2 || parts[0].trim().isEmpty() || parts[1].trim().isEmpty()) {
+                        throw new MonadException("OOPS!!! The description or date of a deadline cannot be empty.");
+                    }
+
+                    Task t = new Deadline(parts[0], parts[1]);
+                    tasks.add(t);
+                    System.out.println("___________________________");
+                    System.out.println("Got it. I've added this task:\n");
+                    System.out.println(t.toString());
+                    System.out.println("\nNow you have " + tasks.size() + " tasks in the list.");
+                    System.out.println("___________________________");
+                }
+
+                else if (input.startsWith("event")) {
+                    if (input.length() < 6) {
+                        throw new MonadException("OOPS!!! The description or time of an event cannot be empty.");
+                    }
+                    String[] parts = input.substring(6).split(" /from | /to ", 3);
+
+                    if (parts.length < 3 || parts[0].trim().isEmpty() || parts[1].trim().isEmpty() || parts[2].trim().isEmpty()) {
+                        throw new MonadException("OOPS!!! The description or time of an event cannot be empty.");
+                    }
+
+                    Task t = new Event(parts[0], parts[1], parts[2]);
+                    tasks.add(t);
+                    System.out.println("___________________________");
+                    System.out.println("Got it. I've added this task:\n");
+                    System.out.println(t.toString());
+                    System.out.println("\nNow you have " + tasks.size() + " tasks in the list.");
+                    System.out.println("___________________________");
+                }
+
+                else if (input.equalsIgnoreCase("list")) {
+                    System.out.println("___________________________");
+                    for (int i = 0; i < tasks.size(); i++) {
+                        System.out.println((i + 1) + "." + tasks.get(i));
+                    }
+                    System.out.println("___________________________");
+                }
+
+                else if (input.startsWith("mark")) {
+                    int index = Integer.parseInt(input.substring(5)) - 1;
+                    tasks.get(index).markAsDone();
+                    System.out.println("___________________________");
+                    System.out.println("Nice! I've marked this task as done:\n");
+                    System.out.println(tasks.get(index).toString());
+                    System.out.println("___________________________");
+                }
+
+                else if (input.startsWith("unmark")) {
+                    int index = Integer.parseInt(input.substring(7)) - 1;
+                    tasks.get(index).unmark();
+                    System.out.println("___________________________");
+                    System.out.println("OK, I've marked this task as not done yet:\n");
+                    System.out.println(tasks.get(index).toString());
+                    System.out.println("___________________________");
+                }
+
+                else {
+                    throw new MonadException("OOPS!!! I'm sorry, but I don't know what that means :-(");
+                }
             }
 
-            else if(input.startsWith("mark")) {
-                int index = Integer.parseInt(input.substring(5)) - 1;
-                tasks.get(index).markAsDone();
-                System.out.println("___________________________");
-                System.out.println("Nice! I've marked this task as done:\n");
-                System.out.println(tasks.get(index).toString());
-                System.out.println("___________________________");
-            }
-
-            else if(input.startsWith("unmark")) {
-                int index = Integer.parseInt(input.substring(7)) - 1;
-                tasks.get(index).unmark();
-                System.out.println("___________________________");
-                System.out.println("OK, I've marked this task as not done yet:\n");
-                System.out.println(tasks.get(index).toString());
-                System.out.println("___________________________");
-            }
-
-            else {
-                Task t = new Task(input);
-                tasks.add(t);
-                System.out.println("___________________________");
-                System.out.println("added: " + input);
-                System.out.println("___________________________");
+            catch (MonadException | NumberFormatException e) {
+                System.out.println("____________________________________________________________");
+                System.out.println(e.getMessage());
+                System.out.println("____________________________________________________________");
             }
         }
 
