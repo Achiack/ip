@@ -22,6 +22,38 @@ public class Monad {
                 break;
             }
 
+            else if(input.startsWith("todo")) {
+                Task t = new Todo(input);
+                tasks.add(t);
+                System.out.println("___________________________");
+                System.out.println("Got it. I've added this task:\n");
+                System.out.println(t.toString());
+                System.out.println("\nNow you have " + tasks.size() + " tasks in the list.");
+                System.out.println("___________________________");
+            }
+
+            else if(input.startsWith("deadline")) {
+                String[] parts = input.substring(9).split(" /by ", 2);
+                Task t = new Deadline(parts[0], parts[1]);
+                tasks.add(t);
+                System.out.println("___________________________");
+                System.out.println("Got it. I've added this task:\n");
+                System.out.println(t.toString());
+                System.out.println("\nNow you have " + tasks.size() + " tasks in the list.");
+                System.out.println("___________________________");
+            }
+
+            else if(input.startsWith("event")) {
+                String[] parts = input.substring(6).split(" /from | /to ", 3);
+                Task t = new Event(parts[0], parts[1], parts[2]);
+                tasks.add(t);
+                System.out.println("___________________________");
+                System.out.println("Got it. I've added this task:\n");
+                System.out.println(t.toString());
+                System.out.println("\nNow you have " + tasks.size() + " tasks in the list.");
+                System.out.println("___________________________");
+            }
+
             else if(input.equalsIgnoreCase("list")) {
                 System.out.println("___________________________");
                 for (int i = 0; i < tasks.size(); i++) {
