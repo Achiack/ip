@@ -4,7 +4,8 @@ public class Monad {
     public static void main(String[] args) {
         String ChatbotName = "Monad";
         Scanner sc = new Scanner(System.in);
-
+        String[] mem = new String[100];
+        int memCount = 0;
 
         System.out.println("___________________________");
         System.out.println("Hello! I'm " + ChatbotName);
@@ -20,9 +21,20 @@ public class Monad {
                 System.out.println("___________________________");
                 break;
             }
-            else {
+
+            if(input.equalsIgnoreCase("list")) {
                 System.out.println("___________________________");
-                System.out.println(input);
+                for (int i = 0; i < memCount; i++) {
+                    System.out.println((i + 1) + ". " + mem[i]);
+                }
+                System.out.println("___________________________");
+            }
+
+            else {
+                mem[memCount] = input;
+                memCount++;
+                System.out.println("___________________________");
+                System.out.println("added: " + input);
                 System.out.println("___________________________");
             }
         }
