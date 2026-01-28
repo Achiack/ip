@@ -10,6 +10,20 @@ public class Ui {
         System.out.println("____________________________________________");
     }
 
+    public void showGoodbye(){
+        System.out.println("____________________________________________");
+        System.out.println("Bye. Hope to see you again soon!");
+        System.out.println("____________________________________________");
+    }
+
+    public void showList(TaskList taskList){
+        System.out.println("____________________________________________");
+        for (int i = 0; i < taskList.size(); i++) {
+            System.out.println((i + 1) + "." + taskList.get(i));
+        }
+        System.out.println("____________________________________________");
+    }
+
     public String readCommand() {
         return scanner.nextLine();
     }
@@ -26,15 +40,30 @@ public class Ui {
         System.out.println("Error loading file.");
     }
 
-    public void showAdded(Task task, int size) {
+    public void showAdd(Task task, int size) {
         System.out.println("Got it. I've added this task:");
         System.out.println(" " + task);
         System.out.println("Now you have " + size + " tasks in the list.");
     }
 
-    public void showDeleted(Task task, int size) {
+    public void showDelete(Task task, int size) {
         System.out.println("Noted. I've removed this task:");
         System.out.println(" " + task);
         System.out.println("Now you have " + size + " tasks in the list.");
     }
+
+    public void showMark(Task task){
+        System.out.println("____________________________________________");
+        System.out.println("Nice! I've marked this task as done:\n");
+        System.out.println(task.toString());
+        System.out.println("____________________________________________");
+    }
+
+    public void showUnmark(Task task){
+        System.out.println("____________________________________________");
+        System.out.println("OK, I've marked this task as not done yet:\n");
+        System.out.println(task.toString());
+        System.out.println("____________________________________________");
+    }
+
 }
