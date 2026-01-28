@@ -25,7 +25,7 @@ public class DeadlineCommand extends Command {
             storage.save(tasks.getTasks());
         }
         catch (IOException e) {
-            System.out.println("Error Loading File");
+            System.out.println("Error saving tasks to file.");
         }
         ui.showAdd(d, tasks.size());
     }

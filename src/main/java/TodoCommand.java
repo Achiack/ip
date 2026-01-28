@@ -17,7 +17,7 @@ public class TodoCommand extends Command {
             storage.save(tasks.getTasks());
         }
         catch (IOException e) {
-            System.out.println("Error");
+            System.out.println("Error saving tasks to file.");
         }
         ui.showAdd(todo, tasks.size());
     }

@@ -29,7 +29,7 @@ public class EventCommand extends Command {
             storage.save(tasks.getTasks());
         }
         catch (IOException err) {
-            System.out.println("Error Loading File");
+            System.out.println("Error saving tasks to file.");
         }
         ui.showAdd(e, tasks.size());
     }

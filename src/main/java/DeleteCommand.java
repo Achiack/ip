@@ -15,7 +15,7 @@ public class DeleteCommand extends Command {
             storage.save(tasks.getTasks());
         }
         catch (IOException e) {
-            System.out.println("Error loading file");
+            System.out.println("Error saving tasks to file.");
         }
         ui.showDelete(removed, tasks.size());
     }

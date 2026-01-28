@@ -14,7 +14,7 @@ public class MarkCommand extends Command{
             storage.save(tasks.getTasks());
         }
         catch (IOException e) {
-            System.out.println("Error loading file");
+            System.out.println("Error saving tasks to file.");
         }
         ui.showMark(task);
     }
