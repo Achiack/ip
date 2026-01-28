@@ -44,6 +44,12 @@ public class Monad {
 
                     Task t = new Todo(desc);
                     tasks.add(t);
+                    try {
+                        file.save(tasks);
+                    }
+                    catch (IOException e) {
+                        System.out.println("Error saving tasks to file.");
+                    }
                     System.out.println("___________________________");
                     System.out.println("Got it. I've added this task:\n");
                     System.out.println(t.toString());
@@ -64,6 +70,12 @@ public class Monad {
 
                     Task t = new Deadline(parts[0], parts[1]);
                     tasks.add(t);
+                    try {
+                        file.save(tasks);
+                    }
+                    catch (IOException e) {
+                        System.out.println("Error saving tasks to file.");
+                    }
                     System.out.println("___________________________");
                     System.out.println("Got it. I've added this task:\n");
                     System.out.println(t.toString());
@@ -83,6 +95,12 @@ public class Monad {
 
                     Task t = new Event(parts[0], parts[1], parts[2]);
                     tasks.add(t);
+                    try {
+                        file.save(tasks);
+                    }
+                    catch (IOException e) {
+                        System.out.println("Error saving tasks to file.");
+                    }
                     System.out.println("___________________________");
                     System.out.println("Got it. I've added this task:\n");
                     System.out.println(t.toString());
