@@ -1,5 +1,7 @@
-import java.time.LocalDate;
+package Monad.ui;
 
+
+import Monad.commands.*;
 
 public class Parser {
 
@@ -55,7 +57,7 @@ public class Parser {
     private static Command parseDeadline(String input) throws MonadException {
         String[] parts = input.split(" /by ");
         if (parts.length < 2) {
-            throw new MonadException("Deadline must have /by");
+            throw new MonadException("Monad.Tasks.Deadline must have /by");
         }
 
 
@@ -70,13 +72,13 @@ public class Parser {
     private static Command parseEvent(String input) throws MonadException {
         String[] partsFrom = input.split(" /from ");
         if (partsFrom.length < 2) {
-            throw new MonadException("Event must have /from");
+            throw new MonadException("Monad.Tasks.Event must have /from");
         }
 
         String desc = partsFrom[0].substring(5).trim();
         String[] partsTo = partsFrom[1].split(" /to ");
         if (partsTo.length < 2) {
-            throw new MonadException("Event must have /to");
+            throw new MonadException("Monad.Tasks.Event must have /to");
         }
 
         String from = partsTo[0].trim();

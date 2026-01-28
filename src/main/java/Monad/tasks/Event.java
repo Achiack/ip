@@ -1,3 +1,7 @@
+package Monad.tasks;
+
+import Monad.ui.MonadException;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -6,7 +10,7 @@ public class Event extends Task {
     protected LocalDateTime from;
     protected LocalDateTime to;
 
-    public Event(String description, String from, String to) throws MonadException{
+    public Event(String description, String from, String to) throws MonadException {
         super(description, TaskType.EVENT);
         try {
             this.from = LocalDateTime.parse(from);

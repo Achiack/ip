@@ -1,5 +1,12 @@
+package Monad.commands;
+
+import Monad.tasks.Event;
+import Monad.tasks.TaskList;
+import Monad.ui.MonadException;
+import Monad.ui.Storage;
+import Monad.ui.Ui;
+
 import java.io.IOException;
-import java.time.LocalDate;
 
 
 public class EventCommand extends Command {

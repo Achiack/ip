@@ -1,5 +1,12 @@
+package Monad.commands;
+
+import Monad.tasks.Deadline;
+import Monad.tasks.TaskList;
+import Monad.ui.MonadException;
+import Monad.ui.Storage;
+import Monad.ui.Ui;
+
 import java.io.IOException;
-import java.time.LocalDate;
 
 public class DeadlineCommand extends Command {
     private final String description;

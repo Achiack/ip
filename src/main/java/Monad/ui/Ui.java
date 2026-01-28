@@ -1,3 +1,8 @@
+package Monad.ui;
+
+import Monad.tasks.Task;
+import Monad.tasks.TaskList;
+
 import java.util.Scanner;
 
 public class Ui {
