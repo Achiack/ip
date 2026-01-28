@@ -7,8 +7,14 @@ public class Monad {
         String ChatbotName = "Monad";
         Scanner sc = new Scanner(System.in);
         Storage file = new Storage("./data/monad.txt");
-        ArrayList<Task> tasks = new ArrayList<>();
-
+        ArrayList<Task> tasks;
+        try {
+            tasks = file.load();
+        }
+        catch (IOException e) {
+            tasks = new ArrayList<>();
+            System.out.println("Warning: Could not load data.");
+        }
 
         System.out.println("___________________________");
         System.out.println("Hello! I'm " + ChatbotName);
