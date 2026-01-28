@@ -65,19 +65,23 @@ public class Storage {
 
         Task task;
 
-
-        switch (type) {
-            case "T":
-                task = new Todo(desc);
-                break;
-            case "D":
-                task = new Deadline(desc, parts[3]);
-                break;
-            case "E":
-                task = new Event(desc, parts[3], parts[4]);
-                break;
-            default:
-                throw new IllegalArgumentException("Corrupted data file");
+        try {
+            switch (type) {
+                case "T":
+                    task = new Todo(desc);
+                    break;
+                case "D":
+                    task = new Deadline(desc, parts[3]);
+                    break;
+                case "E":
+                    task = new Event(desc, parts[3], parts[4]);
+                    break;
+                default:
+                    throw new IllegalArgumentException("Corrupted data file");
+            }
+        }
+        catch (MonadException e) {
+            throw new IllegalArgumentException("Corrupted data file: " + e.getMessage());
         }
 
 
