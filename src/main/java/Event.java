@@ -1,16 +1,31 @@
-public class Event extends Task {
-    protected String from;
-    protected String to;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
-    public Event(String description, String from, String to) {
+public class Event extends Task {
+    protected LocalDateTime from;
+    protected LocalDateTime to;
+
+    public Event(String description, String from, String to) throws MonadException{
         super(description, TaskType.EVENT);
-        this.from = from;
-        this.to = to;
+        try {
+            this.from = LocalDateTime.parse(from);
+        }
+        catch (DateTimeParseException e) {
+            throw new MonadException("Invalid date/time format. Use yyyy-MM-ddTHH:mm");
+        }
+        try {
+            this.to = LocalDateTime.parse(to);
+        }
+        catch (DateTimeParseException e) {
+            throw new MonadException("Invalid date/time format. Use yyyy-MM-ddTHH:mm");
+        }
     }
 
     @Override
     public String toString() {
-        return super.toString() + " (from: " + from + " to: " + to + ")";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd yyyy HH:mm");
+        return super.toString() + " (from: " + from.format(formatter) + " to: " + to.format(formatter) + ")";
     }
 
     @Override

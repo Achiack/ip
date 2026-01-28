@@ -1,14 +1,24 @@
-public class Deadline extends Task {
-    protected String by;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
-    public Deadline(String description, String by) {
+public class Deadline extends Task {
+    protected LocalDate by;
+
+    public Deadline(String description, String by) throws MonadException{
         super(description, TaskType.DEADLINE);
-        this.by = by;
+        try {
+            this.by = LocalDate.parse(by); // expects yyyy-MM-dd
+        }
+        catch (DateTimeParseException e) {
+            throw new MonadException("Invalid date format. Use yyyy-MM-dd");
+        }
     }
 
     @Override
     public String toString(){
-        return super.toString() + " (by: " + by + ")";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd yyyy");
+        return super.toString() + " (by: " + by.format(formatter) + ")";
     }
 
     @Override
