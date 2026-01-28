@@ -26,4 +26,10 @@ public class Task {
         return "[" + type.getSymbol() + "]" + status + " " + description;
     }
 
+    public String toFileString() {
+        return type.getSymbol() + " | "
+                + (isDone ? "1" : "0") + " | "
+                + description;
+    }
+
 }

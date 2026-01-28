@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -5,7 +6,9 @@ public class Monad {
     public static void main(String[] args) {
         String ChatbotName = "Monad";
         Scanner sc = new Scanner(System.in);
+        Storage file = new Storage("./data/monad.txt");
         ArrayList<Task> tasks = new ArrayList<>();
+
 
         System.out.println("___________________________");
         System.out.println("Hello! I'm " + ChatbotName);
