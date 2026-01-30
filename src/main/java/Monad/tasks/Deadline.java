@@ -6,9 +6,17 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+/**
+ * Represents a deadline entry
+ */
 public class Deadline extends Task {
     protected LocalDate by;
-
+    /**
+     * Creates a new Deadline with the given description and deadline.
+     *
+     * @param description The description of the task
+     * @param by The deadline date/time for the task
+     */
     public Deadline(String description, String by) throws MonadException {
         super(description, TaskType.DEADLINE);
         try {
@@ -19,12 +27,18 @@ public class Deadline extends Task {
         }
     }
 
+    /**
+     * Converts the deadline into a string format
+     */
     @Override
     public String toString(){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd yyyy");
         return super.toString() + " (by: " + by.format(formatter) + ")";
     }
 
+    /**
+     * Converts the deadline into a format for file storage
+     */
     @Override
     public String toFileString() {
         return "D | "

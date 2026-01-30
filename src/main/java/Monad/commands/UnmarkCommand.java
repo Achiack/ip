@@ -9,7 +9,7 @@ import Monad.ui.Ui;
 import java.io.IOException;
 
 /**
- * Represents the command marks a task as not completed.
+ * Represents the command that marks a task as not completed.
  * <p>
  * When executed, this command marks a task as not completed.
  */
