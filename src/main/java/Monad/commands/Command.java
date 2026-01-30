@@ -5,6 +5,9 @@ import Monad.ui.Storage;
 import Monad.tasks.TaskList;
 import Monad.ui.Ui;
 
+/**
+ * Represents the command that terminates the application.
+ */
 public abstract class Command {
     /**
      * Executes a command and shows the result on the UI

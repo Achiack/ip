@@ -8,12 +8,24 @@ import Monad.ui.Ui;
 
 import java.io.IOException;
 
+/**
+ * Represents the command marks a task as not completed.
+ * <p>
+ * When executed, this command marks a task as not completed.
+ */
 public class UnmarkCommand extends Command{
     private final int index;
     public UnmarkCommand(int index) {
         this.index = index;
     }
 
+    /**
+     * Executes a command to mark a task as not completed
+     *
+     * @param tasks List of tasks
+     * @param ui UI object used to display the result
+     * @param storage Storage to keep lists of tasks
+     */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws MonadException {
         Task task = tasks.get(index);
