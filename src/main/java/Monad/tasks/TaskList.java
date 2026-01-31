@@ -27,10 +27,10 @@ public class TaskList {
     /**
      * Adds a Task to the TaskList.
      *
-     * @param t The task to be added
+     * @param task The task to be added
      */
-    public void add(Task t) {
-        this.tasks.add(t);
+    public void add(Task task) {
+        this.tasks.add(task);
     }
 
     /**
