@@ -18,4 +18,10 @@ public abstract class Command {
      */
     public abstract void execute(TaskList tasks, Ui ui, Storage storage) throws MonadException;
 
+    /**
+     * Tells the UI to keep running
+     */
+    public boolean isExit() {
+        return false;
+    }
 }

@@ -24,4 +24,12 @@ public class ByeCommand extends Command {
         ui.showGoodbye();
     }
 
+    /**
+     * Tells the UI to stop the program
+     */
+    @Override
+    public boolean isExit() {
+        return true;
+    }
+
 }
