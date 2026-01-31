@@ -23,4 +23,13 @@ public class ByeCommand extends Command {
     public void execute(TaskList tasks, Ui ui, Storage storage) {
         ui.showGoodbye();
     }
+
+    /**
+     * Tells the UI to stop the program
+     */
+    @Override
+    public boolean isExit() {
+        return true;
+    }
+
 }

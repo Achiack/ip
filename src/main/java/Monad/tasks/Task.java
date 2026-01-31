@@ -39,6 +39,13 @@ public class Task {
     }
 
     /**
+     * Returns the description of the task
+     */
+    public String getDescription() {
+        return this.description;
+    }
+
+    /**
      * Converts the task into a string format
      */
     public String toString() {

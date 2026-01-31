@@ -49,6 +49,10 @@ public class Parser {
             return parseUnmark(trimmed);
         }
 
+        if (trimmed.startsWith("find")) {
+            return parseFind(trimmed);
+        }
+
         throw new MonadException("I'm sorry, but I don't know what that means :-(");
     }
 
@@ -148,5 +152,13 @@ public class Parser {
         } catch (NumberFormatException e) {
             throw new MonadException("Please provide a valid task number.");
         }
+    }
+
+    private static Command parseFind(String input) throws MonadException {
+        String keyword = input.substring(4).trim();
+        if (keyword.isEmpty()) {
+            throw new MonadException("Please provide a keyword to search for.");
+        }
+        return new FindCommand(keyword);
     }
 }
