@@ -3,11 +3,19 @@ package Monad.ui;
 import Monad.commands.Command;
 import Monad.tasks.TaskList;
 
+/**
+ * Represents the ChatBot
+ */
 public class Monad {
     private Storage storage;
     private TaskList tasks;
     private Ui ui;
 
+    /**
+     * Creates a new chatbot instance with the storage file.
+     *
+     * @param filePath The path of the storage file
+     */
     public Monad(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
@@ -21,6 +29,9 @@ public class Monad {
         }
     }
 
+    /**
+     * Runs the Chatbot
+     */
     public void run() {
         ui.showWelcome();
 

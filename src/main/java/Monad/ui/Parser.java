@@ -3,9 +3,17 @@ package Monad.ui;
 
 import Monad.commands.*;
 
+/**
+ * Represents the input parser
+ */
 public class Parser {
 
-
+    /**
+     * Parses a user input to identify the command used
+     * Returns a command
+     *
+     * @param input The user input to parse
+     */
     public static Command parse(String input) throws MonadException {
         String trimmed = input.trim();
 
@@ -45,6 +53,11 @@ public class Parser {
     }
 
 
+    /**
+     * Parses a todo command.
+     *
+     * @param input The full user input starting with todo.
+     */
     private static Command parseTodo(String input) throws MonadException {
         String desc = input.substring(4).trim();
         if (desc.isEmpty()) {
@@ -53,7 +66,11 @@ public class Parser {
         return new TodoCommand(desc);
     }
 
-
+    /**
+     * Parses a deadline command.
+     *
+     * @param input The full user input starting with deadline.
+     */
     private static Command parseDeadline(String input) throws MonadException {
         String[] parts = input.split(" /by ");
         if (parts.length < 2) {
@@ -68,7 +85,11 @@ public class Parser {
         return new DeadlineCommand(desc, by);
     }
 
-
+    /**
+     * Parses an event command.
+     *
+     * @param input The full user input starting with event.
+     */
     private static Command parseEvent(String input) throws MonadException {
         String[] partsFrom = input.split(" /from ");
         if (partsFrom.length < 2) {
@@ -87,7 +108,11 @@ public class Parser {
         return new EventCommand(desc, from, to);
     }
 
-
+    /**
+     * Parses a delete command.
+     *
+     * @param input The full user input starting with delete.
+     */
     private static Command parseDelete(String input) throws MonadException {
         try {
             int index = Integer.parseInt(input.substring(6).trim()) - 1;
@@ -97,6 +122,11 @@ public class Parser {
         }
     }
 
+    /**
+     * Parses a mark command.
+     *
+     * @param input The full user input starting with mark.
+     */
     private static Command parseMark(String input) throws MonadException {
         try {
             int index = Integer.parseInt(input.substring(5).trim()) - 1;
@@ -106,6 +136,11 @@ public class Parser {
         }
     }
 
+    /**
+     * Parses a unmark command.
+     *
+     * @param input The full user input starting with unmark.
+     */
     private static Command parseUnmark(String input) throws MonadException {
         try {
             int index = Integer.parseInt(input.substring(7).trim()) - 1;

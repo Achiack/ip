@@ -9,15 +9,24 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Represents the Storage Handler
+ */
 public class Storage {
     private final File file;
 
-
+    /**
+     * Creates a new Storage instance
+     *
+     * @param filePath The path location of the storage file
+     */
     public Storage(String filePath) {
         this.file = new File(filePath);
     }
 
-
+    /**
+     * Loads an array from the Storage file
+     */
     public ArrayList<Task> load() throws IOException {
         ArrayList<Task> tasks = new ArrayList<>();
 
@@ -43,7 +52,11 @@ public class Storage {
         return tasks;
     }
 
-
+    /**
+     * Saves tasks to the storage file
+     *
+     * @param tasks The list of tasks to save to the storage file
+     */
     public void save(ArrayList<Task> tasks) throws IOException {
         FileWriter fw = new FileWriter(file);
 
@@ -57,10 +70,11 @@ public class Storage {
         fw.close();
     }
 
-
-// --- Helper ---
-
-
+    /**
+     * Parses one line of information from the storage file
+     *
+     * @param line The line to parse
+     */
     private Task parseTask(String line) {
         String[] parts = line.split(" \\| ");
 
