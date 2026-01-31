@@ -37,20 +37,21 @@ public class DeadlineCommand extends Command {
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws MonadException {
-        Deadline d = null;
+        Deadline deadline = null;
         try {
-            d = new Deadline(description, by);
+            deadline = new Deadline(description, by);
         }
         catch (MonadException e) {
             System.out.println("Error");
         }
-        tasks.add(d);
+
+        tasks.add(deadline);
         try {
             storage.save(tasks.getTasks());
         }
         catch (IOException e) {
             System.out.println("Error saving tasks to file.");
         }
-        ui.showAdd(d, tasks.size());
+        ui.showAdd(deadline, tasks.size());
     }
 }

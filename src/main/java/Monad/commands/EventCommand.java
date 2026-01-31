@@ -40,20 +40,20 @@ public class EventCommand extends Command {
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws MonadException {
-        Event e = null;
+        Event event = null;
         try {
-            e = new Event(description, from, to);
+            event = new Event(description, from, to);
         }
         catch (MonadException err) {
             System.out.println("Error");
         }
-        tasks.add(e);
+        tasks.add(event);
         try {
             storage.save(tasks.getTasks());
         }
         catch (IOException err) {
             System.out.println("Error saving tasks to file.");
         }
-        ui.showAdd(e, tasks.size());
+        ui.showAdd(event, tasks.size());
     }
 }

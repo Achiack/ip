@@ -20,7 +20,7 @@ public class Deadline extends Task {
     public Deadline(String description, String by) throws MonadException {
         super(description, TaskType.DEADLINE);
         try {
-            this.by = LocalDate.parse(by); // expects yyyy-MM-dd
+            this.by = LocalDate.parse(by);
         }
         catch (DateTimeParseException e) {
             throw new MonadException("Invalid date format. Use yyyy-MM-dd");
