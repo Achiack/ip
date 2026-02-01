@@ -113,7 +113,7 @@ public class Ui {
     }
 
     public void showFindResults(TaskList tasks, String keyword) {
-        showLine();
+        System.out.println("____________________________________________");
         System.out.println("Here are the matching tasks in your list:");
 
         int count = 0;
@@ -128,8 +128,7 @@ public class Ui {
         if (count == 0) {
             System.out.println("No matching tasks found.");
         }
-
-        showLine();
+        System.out.println("____________________________________________");
     }
 
 }
