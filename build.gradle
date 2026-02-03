@@ -48,7 +48,7 @@ test {
 }
 
 application {
-    mainClass.set("Monad.ui.Monad")
+    mainClass.set("Launcher")
 }
 
 shadowJar {
