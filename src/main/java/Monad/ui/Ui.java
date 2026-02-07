@@ -12,22 +12,31 @@ public class Ui {
     private final Scanner scanner = new Scanner(System.in);
 
     /**
+     * Prints multiple lines of text on the UI
+     */
+    private void printBox(String... lines) {
+        System.out.println("____________________________________________");
+        for (String line : lines) {
+            System.out.println(line);
+        }
+        System.out.println("____________________________________________");
+    }
+
+    /**
      * Displays the welcome message on the UI
      */
     public void showWelcome() {
-        System.out.println("____________________________________________");
-        System.out.println("Hello! I'm Monad");
-        System.out.println("What can I do for you?");
-        System.out.println("____________________________________________");
+        printBox(
+                "Hello! I'm Monad",
+                "What can I do for you?"
+        );
     }
 
     /**
      * Displays the goodbye message on the UI
      */
     public void showGoodbye(){
-        System.out.println("____________________________________________");
-        System.out.println("Bye. Hope to see you again soon!");
-        System.out.println("____________________________________________");
+        printBox("Bye. Hope to see you again soon!");
     }
 
     /**
@@ -36,11 +45,9 @@ public class Ui {
      * @param taskList The list of tasks to display
      */
     public void showList(TaskList taskList){
-        System.out.println("____________________________________________");
         for (int i = 0; i < taskList.size(); i++) {
             System.out.println((i + 1) + "." + taskList.get(i));
         }
-        System.out.println("____________________________________________");
     }
 
     /**
@@ -71,9 +78,11 @@ public class Ui {
      * @param size The size of the task list
      */
     public void showAdd(Task task, int size) {
-        System.out.println("Got it. I've added this task:");
-        System.out.println(" " + task);
-        System.out.println("Now you have " + size + " tasks in the list.");
+        printBox(
+                "Got it. I've added this task:",
+                " " + task,
+                "Now you have " + size + " tasks in the list."
+        );
     }
 
     /**
@@ -83,9 +92,11 @@ public class Ui {
      * @param size The size of the task list
      */
     public void showDelete(Task task, int size) {
-        System.out.println("Noted. I've removed this task:");
-        System.out.println(" " + task);
-        System.out.println("Now you have " + size + " tasks in the list.");
+        printBox(
+                "Noted. I've removed this task:",
+                " " + task,
+                "Now you have " + size + " tasks in the list."
+        );
     }
 
     /**
@@ -94,10 +105,10 @@ public class Ui {
      * @param task The task that was marked as completed
      */
     public void showMark(Task task){
-        System.out.println("____________________________________________");
-        System.out.println("Nice! I've marked this task as done:\n");
-        System.out.println(task.toString());
-        System.out.println("____________________________________________");
+        printBox(
+                "Nice! I've marked this task as done:",
+                task.toString()
+        );
     }
 
     /**
@@ -106,10 +117,10 @@ public class Ui {
      * @param task The task that was marked as not completed
      */
     public void showUnmark(Task task){
-        System.out.println("____________________________________________");
-        System.out.println("OK, I've marked this task as not done yet:\n");
-        System.out.println(task.toString());
-        System.out.println("____________________________________________");
+        printBox(
+                "OK, I've marked this task as not done yet:",
+                task.toString()
+        );
     }
 
     public void showFindResults(TaskList tasks, String keyword) {
