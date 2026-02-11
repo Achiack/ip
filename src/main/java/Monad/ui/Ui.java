@@ -4,8 +4,10 @@ import Monad.tasks.Task;
 import Monad.tasks.TaskList;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 /**
  * Represents the UI handler
@@ -18,9 +20,8 @@ public class Ui {
      */
     private void printBox(String... lines) {
         System.out.println("____________________________________________");
-        for (String line : lines) {
-            System.out.println(line);
-        }
+        Arrays.stream(lines)
+                .forEach(System.out::println);
         System.out.println("____________________________________________");
     }
 
@@ -47,9 +48,10 @@ public class Ui {
      * @param taskList The list of tasks to display
      */
     public void showList(TaskList taskList){
-        for (int i = 0; i < taskList.size(); i++) {
-            System.out.println((i + 1) + "." + taskList.get(i));
-        }
+        System.out.println("____________________________________________");
+        IntStream.range(0, taskList.size())
+                .forEach(i -> System.out.println((i + 1) + "." + taskList.get(i)));
+        System.out.println("____________________________________________");
     }
 
     /**
