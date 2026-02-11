@@ -34,6 +34,10 @@ public class DeleteCommand extends Command {
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws MonadException {
+        assert tasks != null;
+        assert ui != null;
+        assert storage != null;
+
         Task removed = tasks.get(index);
         tasks.remove(index);
         try {

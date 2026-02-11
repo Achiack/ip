@@ -30,6 +30,7 @@ public class TaskList {
      * @param task The task to be added
      */
     public void add(Task task) {
+        assert task != null;
         this.tasks.add(task);
     }
 
@@ -39,6 +40,7 @@ public class TaskList {
      * @param index The index of task to be removed
      */
     public void remove(int index) {
+        assert index >= 0 && index < tasks.size();
         this.tasks.remove(index);
     }
 
@@ -48,6 +50,7 @@ public class TaskList {
      * @param index The index of task to retrieve
      */
     public Task get(int index) {
+        assert index >= 0 && index < tasks.size();
         return tasks.get(index);
     }
 
