@@ -34,6 +34,10 @@ public class TodoCommand extends Command {
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws MonadException {
+        assert tasks != null;
+        assert ui != null;
+        assert storage != null;
+
         Todo todo = new Todo(description);
         tasks.add(todo);
         try {

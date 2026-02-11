@@ -28,6 +28,10 @@ public class MarkCommand extends Command{
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws MonadException {
+        assert tasks != null;
+        assert ui != null;
+        assert storage != null;
+
         Task task = tasks.get(index);
         task.markAsDone();
         try {
