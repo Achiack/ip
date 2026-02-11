@@ -3,6 +3,8 @@ package Monad.ui;
 
 import Monad.commands.*;
 
+import java.util.Map;
+
 /**
  * Represents the input parser
  */
@@ -16,6 +18,18 @@ public class Parser {
     private static final int UNMARK_PREFIX = 7;
     private static final int FIND_PREFIX = 4;
 
+    private static final Map<String, CommandParser> COMMANDS = Map.of(
+            "bye", s -> new ByeCommand(),
+            "list", s -> new ListCommand(),
+            "todo", Parser::parseTodo,
+            "deadline", Parser::parseDeadline,
+            "event", Parser::parseEvent,
+            "delete", Parser::parseDelete,
+            "mark", Parser::parseMark,
+            "unmark", Parser::parseUnmark,
+            "find", Parser::parseFind
+    );
+
     /**
      * Parses a user input to identify the command used
      * Returns a command
@@ -24,44 +38,15 @@ public class Parser {
      */
     public static Command parse(String input) throws MonadException {
         String trimmed = input.trim();
+        String commandWord = trimmed.split(" ", 2)[0];
 
-        if (trimmed.equals("bye")) {
-            return new ByeCommand();
+        CommandParser parser = COMMANDS.get(commandWord);
+
+        if (parser == null) {
+            throw new MonadException("I'm sorry, but I don't know what that means :-(");
         }
 
-        if (trimmed.equals("list")) {
-            return new ListCommand();
-        }
-
-        if (trimmed.startsWith("todo")) {
-            return parseTodo(trimmed);
-        }
-
-        if (trimmed.startsWith("deadline")) {
-            return parseDeadline(trimmed);
-        }
-
-        if (trimmed.startsWith("event")) {
-            return parseEvent(trimmed);
-        }
-
-        if (trimmed.startsWith("delete")) {
-            return parseDelete(trimmed);
-        }
-
-        if (trimmed.startsWith("mark")) {
-            return parseMark(trimmed);
-        }
-
-        if (trimmed.startsWith("unmark")) {
-            return parseUnmark(trimmed);
-        }
-
-        if (trimmed.startsWith("find")) {
-            return parseFind(trimmed);
-        }
-
-        throw new MonadException("I'm sorry, but I don't know what that means :-(");
+        return parser.parse(trimmed);
     }
 
 
