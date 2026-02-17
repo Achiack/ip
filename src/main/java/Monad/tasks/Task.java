@@ -20,6 +20,9 @@ public class Task {
         this.type = type;
     }
 
+    /**
+     * Gets the status of the task
+     */
     public String getStatusIcon() {
         return (isDone ? "X" : " "); // mark done task with X
     }

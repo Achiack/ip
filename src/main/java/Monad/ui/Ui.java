@@ -127,6 +127,24 @@ public class Ui {
         );
     }
 
+    /**
+     * Displays tasks whose descriptions contain the given keyword.
+     * <p>
+     * This method searches through the provided {@code TaskList} and finds all
+     * {@code Task} objects whose description includes the specified keyword.
+     * Matching tasks are displayed in a numbered list inside a formatted box.
+     * </p>
+     *
+     * <p>
+     * If no tasks match the keyword, a message indicating that no matching
+     * tasks were found will be displayed instead.
+     * </p>
+     *
+     * @param tasks   The {@code TaskList} containing tasks to be searched.
+     *                Must not be {@code null}.
+     * @param keyword The keyword used to search task descriptions.
+     *                Matching is case-sensitive and based on substring containment.
+     */
     public void showFindResults(TaskList tasks, String keyword) {
         List<String> lines = new ArrayList<>();
         lines.add("Here are the matching tasks in your list:");
