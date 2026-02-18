@@ -167,7 +167,6 @@ public class Ui {
 
     public void showSortedDeadlines(List<Task> tasks) {
         printBox("Here are your deadlines sorted chronologically:");
-        System.out.println(tasks);
         for (int i = 0; i < tasks.size(); i++) {
             System.out.println((i + 1) + ". " + tasks.get(i));
         }

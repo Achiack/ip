@@ -16,17 +16,16 @@ public class SortCommand extends Command {
 
     @Override
     public String execute(TaskList tasks, Ui ui, Storage storage) throws MonadException {
-        System.out.println(tasks);
-        List<Task> sortedDeadlines = tasks.sortByDate();
-        StringBuilder sb = new StringBuilder();
+        List<Task> sortedDeadlines = tasks.sortByDate(); // must return only deadlines sorted by date
 
+        StringBuilder sb = new StringBuilder();
         sb.append("Here are your deadlines sorted chronologically:")
                 .append(System.lineSeparator());
 
-        for (int i = 0; i < tasks.size(); i++) {
+        for (int i = 0; i < sortedDeadlines.size(); i++) {
             sb.append(i + 1)
                     .append(". ")
-                    .append(tasks.get(i))
+                    .append(sortedDeadlines.get(i))
                     .append(System.lineSeparator());
         }
 
