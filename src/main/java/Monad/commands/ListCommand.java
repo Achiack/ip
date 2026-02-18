@@ -4,6 +4,9 @@ import Monad.ui.Storage;
 import Monad.tasks.TaskList;
 import Monad.ui.Ui;
 
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 /**
  * Represents the command that displays a list of tasks.
  * <p>
@@ -19,10 +22,12 @@ public class ListCommand extends Command {
      * @param storage Storage to keep lists of tasks
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
         assert tasks != null;
         assert ui != null;
         assert storage != null;
-        ui.showList(tasks);
+        return IntStream.range(0, tasks.size())
+                .mapToObj(i -> (i + 1) + ". " + tasks.get(i))
+                .collect(Collectors.joining(System.lineSeparator()));
     }
 }

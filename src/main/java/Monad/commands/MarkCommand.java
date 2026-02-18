@@ -27,7 +27,7 @@ public class MarkCommand extends Command{
      * @param storage Storage to keep lists of tasks
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws MonadException {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws MonadException {
         assert tasks != null;
         assert ui != null;
         assert storage != null;
@@ -40,6 +40,7 @@ public class MarkCommand extends Command{
         catch (IOException e) {
             System.out.println("Error saving tasks to file.");
         }
-        ui.showMark(task);
+        return "Nice! I've marked this task as done:\n" +
+                task.toString();
     }
 }

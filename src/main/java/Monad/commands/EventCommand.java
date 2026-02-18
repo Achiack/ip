@@ -39,7 +39,7 @@ public class EventCommand extends Command {
      * @param storage Storage to keep lists of tasks
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws MonadException {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws MonadException {
         assert tasks != null;
         assert ui != null;
         assert storage != null;
@@ -58,6 +58,8 @@ public class EventCommand extends Command {
         catch (IOException err) {
             System.out.println("Error saving tasks to file.");
         }
-        ui.showAdd(event, tasks.size());
+        return "Got it. I've added this task:" +
+                " " + event + "\n" +
+                "Now you have " + tasks.size() + " tasks in the list.";
     }
 }

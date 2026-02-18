@@ -32,10 +32,11 @@ public class FindCommand extends Command {
      * @param storage Storage to keep lists of tasks
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws MonadException {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws MonadException {
         assert tasks != null;
         assert ui != null;
         assert storage != null;
-        ui.showFindResults(tasks, taskName);
+        String[] results = ui.showFindResults(tasks, taskName);
+        return String.join("\n", results);
     }
 }

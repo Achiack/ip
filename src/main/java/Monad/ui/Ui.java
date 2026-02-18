@@ -18,7 +18,7 @@ public class Ui {
     /**
      * Prints multiple lines of text on the UI
      */
-    private void printBox(String... lines) {
+    public void printBox(String... lines) {
         System.out.println("____________________________________________");
         Arrays.stream(lines)
                 .forEach(System.out::println);
@@ -145,7 +145,7 @@ public class Ui {
      * @param keyword The keyword used to search task descriptions.
      *                Matching is case-sensitive and based on substring containment.
      */
-    public void showFindResults(TaskList tasks, String keyword) {
+    public String[] showFindResults(TaskList tasks, String keyword) {
         List<String> lines = new ArrayList<>();
         lines.add("Here are the matching tasks in your list:");
 
@@ -162,7 +162,7 @@ public class Ui {
             lines.add("No matching tasks found.");
         }
 
-        printBox(lines.toArray(new String[0]));
+        return lines.toArray(new String[0]);
     }
 
     public void showSortedDeadlines(List<Task> tasks) {

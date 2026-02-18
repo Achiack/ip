@@ -16,7 +16,7 @@ public abstract class Command {
      * @param ui UI object used to display the result
      * @param storage Storage to keep lists of tasks
      */
-    public abstract void execute(TaskList tasks, Ui ui, Storage storage) throws MonadException;
+    public abstract String execute(TaskList tasks, Ui ui, Storage storage) throws MonadException;
 
     /**
      * Tells the UI to keep running

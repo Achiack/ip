@@ -20,12 +20,12 @@ public class ByeCommand extends Command {
      * @param storage Storage to keep lists of tasks
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
         assert tasks != null;
         assert ui != null;
         assert storage != null;
 
-        ui.showGoodbye();
+        return "Bye. Hope to see you again soon!";
     }
 
     /**

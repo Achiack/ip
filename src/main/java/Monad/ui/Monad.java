@@ -38,18 +38,14 @@ public class Monad {
 
         boolean isExit = false;
         while (true) {
-            try {
-                String input = ui.readCommand();
-                Command command = Parser.parse(input);
-                command.execute(tasks, ui, storage);
+            String input = ui.readCommand();
+            String response = getResponse(input);
+            ui.printBox(response);
 
-                if (command.isExit()) {
-                    break;
-                }
-
-            } catch (MonadException e) {
-                ui.showError(e.getMessage());
+            if (input.equals("bye")) {
+                break;
             }
+
         }
     }
 
@@ -57,7 +53,12 @@ public class Monad {
      * Generates a response for the user's chat message.
      */
     public String getResponse(String input) {
-        return "Monad heard: " + input;
+        try {
+            Command command = Parser.parse(input);
+            return command.execute(tasks, ui, storage);
+        } catch (MonadException e) {
+            return e.getMessage();
+        }
     }
 
     public static void main(String[] args) {

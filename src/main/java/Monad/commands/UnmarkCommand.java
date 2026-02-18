@@ -27,7 +27,7 @@ public class UnmarkCommand extends Command{
      * @param storage Storage to keep lists of tasks
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws MonadException {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws MonadException {
         assert tasks != null;
         assert ui != null;
         assert storage != null;
@@ -41,5 +41,7 @@ public class UnmarkCommand extends Command{
             System.out.println("Error saving tasks to file.");
         }
         ui.showUnmark(task);
+        return "OK, I've marked this task as not done yet:\n" +
+                task.toString();
     }
 }
