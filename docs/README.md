@@ -1,30 +1,86 @@
-# Duke User Guide
+# Monad User Guide
 
-// Update the title above to match the actual product name
+Welcome to **Monad**, your personal task management chatbot! Monad helps you manage todos, deadlines, events, and more—all via simple commands or a GUI.
 
-// Product screenshot goes here
+---
 
-// Product intro goes here
+## Adding Tasks
+You can add todo tasks using the `todo` command. A todo task consists of a description.
 
-## Adding deadlines
+**Command format:**
 
-// Describe the action and its outcome.
-
-// Give examples of usage
-
-Example: `keyword (optional arguments)`
-
-// A description of the expected outcome goes here
-
-```
-expected output
+```bash
+todo <description>
 ```
 
-## Feature ABC
+You can add deadlines using the `deadline` command. A deadline consists of a description and a date.
 
-// Feature details
+**Command format:**
 
+```bash
+deadline <description> /by <yyyy-mm-dd>
+```
+You can add event using the `event` command. An event consists of a description and two dates indicating the start and end datetime.
 
-## Feature XYZ
+**Command format:**
 
-// Feature details
+```bash
+event <description> /from <yyyy-mm-ddTHH:mm> /to <yyyy-mm-ddTHH:mm>
+```
+
+---
+
+## Marking / Unmarking Tasks
+
+You can mark or unmark a task is completed using the `mark` command. The command uses the index of the task.
+
+**Command format:**
+
+```bash
+mark <index>
+```
+
+---
+## Delete Task
+
+You can delete a task using the `delete` command. The command uses the index of the task.
+
+**Command format:**
+
+```bash
+delete <index>
+```
+
+---
+
+## Find Task
+
+You can search for a task using the `find` command. The command uses a keyword to search for.
+
+**Command format:**
+
+```bash
+find <keyword>
+```
+
+---
+## List Tasks
+
+You can list of all tasks using the `list` command. The command does not require any parameters.
+
+**Command format:**
+
+```bash
+list
+```
+---
+## Sort Deadlines
+
+You can sort deadlines by earliest to latest using the `sort` command. The command does not require any parameters.
+
+**Command format:**
+
+```bash
+sort
+```
+---

@@ -4,3 +4,4 @@ D | 1 | test | 2022-09-26
 T | 0 | testtttt
 T | 0 | ersre
 T | 0 | msm
+E | 0 | team meeting | 2026-02-26T10:00 | 2026-02-26T12:00
