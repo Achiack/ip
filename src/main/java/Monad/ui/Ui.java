@@ -165,4 +165,12 @@ public class Ui {
         printBox(lines.toArray(new String[0]));
     }
 
+    public void showSortedDeadlines(List<Task> tasks) {
+        printBox("Here are your deadlines sorted chronologically:");
+        System.out.println(tasks);
+        for (int i = 0; i < tasks.size(); i++) {
+            System.out.println((i + 1) + ". " + tasks.get(i));
+        }
+    }
+
 }

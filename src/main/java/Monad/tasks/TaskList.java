@@ -1,6 +1,9 @@
 package Monad.tasks;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * Represents a List of Tasks
@@ -65,5 +68,15 @@ public class TaskList {
      */
     public ArrayList<Task> getTasks() {
         return tasks;
+    }
+
+    public List<Task> sortByDate() {
+        System.out.println(tasks);
+        return tasks.stream()
+                .filter(task -> task instanceof HasDate)
+                .sorted(Comparator.comparing(task ->
+                        ((HasDate) task).getDate()))
+                .toList();
+
     }
 }

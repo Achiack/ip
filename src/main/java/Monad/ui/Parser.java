@@ -27,7 +27,8 @@ public class Parser {
             "delete", Parser::parseDelete,
             "mark", Parser::parseMark,
             "unmark", Parser::parseUnmark,
-            "find", Parser::parseFind
+            "find", Parser::parseFind,
+            "sort", s -> new SortCommand()
     );
 
     /**
@@ -154,4 +155,6 @@ public class Parser {
         }
         return new FindCommand(keyword);
     }
+
+
 }

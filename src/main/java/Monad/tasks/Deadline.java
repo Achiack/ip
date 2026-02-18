@@ -9,7 +9,7 @@ import java.time.format.DateTimeParseException;
 /**
  * Represents a deadline entry
  */
-public class Deadline extends Task {
+public class Deadline extends Task implements HasDate {
     protected LocalDate by;
     /**
      * Creates a new Deadline with the given description and deadline.
@@ -45,5 +45,10 @@ public class Deadline extends Task {
                 + (isDone ? "1" : "0") + " | "
                 + description + " | "
                 + by;
+    }
+
+    @Override
+    public LocalDate getDate() {
+        return by;
     }
 }
